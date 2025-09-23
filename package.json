@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "cypress": "12.2.0"
+  },
+  "name": "cypress-express",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:painttw07/cypress-express.git",
+  "author": "painttw07 <painttw07@gmail.com>",
+  "license": "MIT"
+}
