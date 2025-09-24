@@ -1,6 +1,6 @@
 describe('Home spec validations', () => {
   it('The web application should be online: ', () => {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
 
     //cy.title() -> função que obtém a info que exibida no título da aba do navegador
     //.should('', '') -> subfunção que recebe dois argumentos:

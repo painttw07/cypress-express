@@ -1,6 +1,20 @@
 /// <reference types="cypress" />
 
 describe("tasks", () => {
+  let testData;
+
+  before(() => {
+    cy.fixture("tasks").then((t) => {
+      //t = recebe o valor do arquivo
+      testData = t;
+    });
+    cy.viewport(1920, 1080);
+  });
+
+  beforeEach(() => {
+    cy.viewport(1920, 1080);
+  });
+
   context("creations", () => {
     it("should add a new task", () => {
       const taskName = "Read 'The crow' from Edgar Allan Poe";
@@ -12,7 +26,7 @@ describe("tasks", () => {
     });
 
     it("shouldn't allow duplicated tasks", () => {
-      const taskName = "Wuthering Heights from Emily Brontë";
+      const taskName = testData.dup.name;
 
       cy.removeTaskByName(taskName);
       cy.postTask(taskName);
@@ -35,7 +49,7 @@ describe("tasks", () => {
       cy.removeTaskByName(taskName);
       cy.postTask(taskName);
 
-      cy.visit("http://localhost:3000");
+      cy.visit("/");
       cy.contains("p", taskName)
         .parent()
         .find("button[class*=ItemToggle]")
@@ -55,7 +69,7 @@ describe("tasks", () => {
       cy.removeTaskByName(taskName);
       cy.postTask(taskName);
 
-      cy.visit("http://localhost:3000");
+      cy.visit("/");
       cy.contains("p", taskName)
         .parent()
         .find("button[class*=ItemDelete]")
