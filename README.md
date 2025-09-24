@@ -1,90 +1,125 @@
-# IN CONSTRUCTION
+# Cypress Express Testing Project
 
-## Pré-requisitos do Projeto
+## Overview
 
-### Ferramentas Necessárias
+This project contains automated tests using Cypress express for web applications. It's designed to be beginner-friendly and includes comprehensive testing examples.
+[Cypress eXpress by Fernando Papito](https://www.udemy.com/course/cypress-express/)
 
-- **Node.js**
-  - Versão recomendada: `v22.14.0` (para Cypress)
-  - Versão recomendada: `v18.12.1` (para MarkL)
-- **Yarn**
-  Instale globalmente:
-  ```powershell
-  npm install --global yarn
-  ```
-- **Git**
-  Para clonar o repositório.
+## Project Features
 
----
+- Complete Cypress project setup
+- Element inspection and manipulation
+- Test result validation
+- Custom command creation
+- Configuration management
+- Window resizing capabilities
+- Regression testing via CLI
+- Automated test evidence (videos/screenshots)
+- Allure Reports integration
 
-### Estrutura de Pastas
+## Installation Requirements
 
-```powershell
-C:\
-└── QAx
-    ├── apps
-    │   └── markL
-    └── project
-        └── <nome do repo>
-```
+### Required Software
 
----
+1. **Node.js**
 
-### Passos de Instalação
+   - For Cypress: Version 22.14.0
+   - For MarkL App: Version 18.12.1
 
-1. **Inicialize o projeto com Yarn**
+2. **Yarn Package Manager**
 
+   ```powershell
+   npm install --global yarn
+   ```
+
+3. **Git**
+   - Required for repository access
+
+### Project Setup
+
+1. **Create Project Directory**
+
+   ```powershell
+   mkdir QAx
+   cd QAx
+   mkdir project
+   cd project
+   ```
+
+2. **Install Project**
    ```powershell
    yarn init
-   ```
-
-2. **Clone o repositório**
-
-   ```powershell
-   cd project
-   git clone <url-do-repo>
-   cd <nome do repo>
-   ```
-
-3. **Instale o Cypress**
-   ```powershell
+   git clone <repository-url>
+   cd cypress-express
    yarn add cypress@12.2.0 -D
+   ```
+
+## Running Tests
+
+### Test Execution Options
+
+1. **Interactive Mode**
+
+   ```powershell
    yarn cypress open
    ```
 
----
+2. **Command Line Mode**
 
-### MarkL App
+   ```powershell
+   yarn cypress run
+   ```
 
-1. **Extraia o arquivo `mark-dev-build-r3.zip` e salve como `markL` em `QAx/apps/markL`**
-2. **API**
+3. **Specific Browser Testing**
+   ```powershell
+   yarn cypress run --browser chrome
+   ```
+
+## MarkL Application Setup
+
+### Installation Steps
+
+1. Extract `mark-dev-build-r3.zip` to `QAx/apps/markL`
+
+2. **Setup API**
+
    ```powershell
    cd api
    npm install
    npm run db:init
-   npm run dev   # database rodando
+   npm run dev
    ```
-3. **Web**
+
+3. **Setup Web Interface**
+
    ```powershell
    cd web
    npm install
    npm run dev
    ```
-4. **Acesse o app**
 
-   - Abra [http://localhost:3000](http://localhost:3000) no navegador.
+4. Access the application at: http://localhost:3000
 
-5. - Para gerar dados fake: https://fakerjs.dev/guide/
+## Helpful Tips
 
----
+### Element Selection in Cypress
 
-CYPRESS SELECTORS:
+1. **By ID**
 
-USO DE SELETORES:
+   - Use `#elementId`
+   - Example: `cy.get('#newTask')`
 
-- ID: procura elementos por id através de # (ex:'#newTask') -> pegando por css selector
-- CLASSE: o seletor inicia com .
-  -- Classes Dinâmicas: //cy.get('.\_listButtonNewTask_1y0mp_40').click()
-- TEXT selector: input[text="<text>"]
-- PLACEHOLDER selector: inpu[placeholder="<placeholder>"]
-- NAME selector: input[name="<name>"]
+2. **By Class**
+
+   - Use `.className`
+   - Works with dynamic classes
+
+3. **By Other Attributes**
+   - Text: `input[text="example"]`
+   - Placeholder: `input[placeholder="example"]`
+   - Name: `input[name="example"]`
+
+### Additional Resources
+
+- Generate test data: [Faker.js](https://fakerjs.dev/guide/)
+- Test results: Check `cypress/videos` for recordings

@@ -11,13 +11,9 @@ describe("tasks", () => {
     cy.viewport(1920, 1080);
   });
 
-  beforeEach(() => {
-    cy.viewport(1920, 1080);
-  });
-
   context("creations", () => {
     it("should add a new task", () => {
-      const taskName = "Read 'The crow' from Edgar Allan Poe";
+      const taskName = "Read The crow from Edgar Allan Poe";
 
       //Para enviar uma requisição http antes do teste iniciar, onde deleta os dados ja criados:
       cy.removeTaskByName(taskName);
@@ -61,10 +57,19 @@ describe("tasks", () => {
         "line-through"
       );
     });
+
+    it("should add a new task with a known bug", () => {
+      const taskName = "Read Pride and Prejudice from Jane Austen";
+
+      cy.removeTaskByName(taskName);
+      cy.createTask(taskName);
+      cy.contains("main div p", "BUG-BUG-BUG").should("be.visible");
+    });
   });
+
   context("delete", () => {
     it("should finish a task", () => {
-      const taskName = "Read 'The crow' from Edgar Allan Poe";
+      const taskName = "Read The crow from Edgar Allan Poe";
 
       cy.removeTaskByName(taskName);
       cy.postTask(taskName);
