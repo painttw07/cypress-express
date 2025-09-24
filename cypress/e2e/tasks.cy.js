@@ -1,21 +1,23 @@
 /// <reference types="cypress" />
 
-describe("Tasks", () => {
-  it("Should add a new task:", () => {
-    
+describe("tasks", () => {
+  it("should add a new task:", () => {
+    const taskName = "Read 'The crow' from Edgar Allan Poe";
+
     //Para enviar uma requisição http antes do teste iniciar, onde deleta os dados ja criados:
-    cy.request({
-      url: "http://localhost:3333/helper/tasks",
-      method: "DELETE",
-      body: { name: "Read a js book" },
-    }).then((response) => {
-      expect(response.status).to.eq(204);
-    });
+    cy.removeTaskByName(taskName);
+    cy.createTask(taskName);
+    cy.contains("main div p", taskName).should("be.visible");
+  });
 
-    cy.visit("http://localhost:3000");
+  it("shouldn't allow duplicated tasks:", () => {
+    const taskName = "Wuthering Heights from Emily Brontë";
 
-    cy.get("#newTask").type("Read a js book");
-
-    cy.contains("button", "Create").click();
+    cy.removeTaskByName(taskName);
+    cy.postTask(taskName);
+    cy.createTask(taskName);
+    cy.get(".swal2-html-container")
+      .should("be.visible")
+      .should("have.text", "Task already exists!");
   });
 });
