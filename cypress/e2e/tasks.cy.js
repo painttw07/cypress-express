@@ -20,4 +20,9 @@ describe("tasks", () => {
       .should("be.visible")
       .should("have.text", "Task already exists!");
   });
+
+  it("should validate required fields:", () => {
+    cy.createTask();
+    cy.verifyRequiredField("This is a required field");
+  });
 });
