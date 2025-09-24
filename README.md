@@ -1,4 +1,4 @@
-# cypress-express
+# IN CONSTRUCTION
 
 ## Pré-requisitos do Projeto
 
@@ -41,7 +41,7 @@ C:\
 2. **Clone o repositório**
 
    ```powershell
-   cd C:/QAx/project
+   cd project
    git clone <url-do-repo>
    cd <nome do repo>
    ```
@@ -59,18 +59,32 @@ C:\
 1. **Extraia o arquivo `mark-dev-build-r3.zip` e salve como `markL` em `QAx/apps/markL`**
 2. **API**
    ```powershell
-   cd C:/QAx/apps/markL/api
+   cd api
    npm install
    npm run db:init
    npm run dev   # database rodando
    ```
 3. **Web**
    ```powershell
-   cd C:/QAx/apps/markL/web
+   cd web
    npm install
    npm run dev
    ```
 4. **Acesse o app**
+
    - Abra [http://localhost:3000](http://localhost:3000) no navegador.
 
+5. - Para gerar dados fake: https://fakerjs.dev/guide/
+
 ---
+
+CYPRESS SELECTORS:
+
+USO DE SELETORES:
+
+- ID: procura elementos por id através de # (ex:'#newTask') -> pegando por css selector
+- CLASSE: o seletor inicia com .
+  -- Classes Dinâmicas: //cy.get('.\_listButtonNewTask_1y0mp_40').click()
+- TEXT selector: input[text="<text>"]
+- PLACEHOLDER selector: inpu[placeholder="<placeholder>"]
+- NAME selector: input[name="<name>"]
