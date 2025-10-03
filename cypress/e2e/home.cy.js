@@ -8,8 +8,8 @@ describe('Home spec validations', () => {
     // - 2º parameter: the value to be compare.
     cy.title().should('eq', 'Gerencie suas tarefas com Mark L')
 
-    //
-    //
+    //test1
+    //test2
     //
 
 
